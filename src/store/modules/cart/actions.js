@@ -11,3 +11,17 @@ export function removeFromCart(id) {
     id,
   };
 }
+
+export function increaseAmount(id) {
+  return {
+    type: '@cart/INCREASE_AMOUNT',
+    id,
+  };
+}
+
+export function decreaseAmount(id) {
+  return {
+    type: '@cart/DECREASE_AMOUNT',
+    id,
+  };
+}
