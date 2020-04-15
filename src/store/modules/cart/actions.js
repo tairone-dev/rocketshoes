@@ -19,9 +19,16 @@ export function removeFromCart(id) {
   };
 }
 
-export function increaseAmount(id) {
+export function increaseAmountRequest(id) {
   return {
-    type: '@cart/INCREASE_AMOUNT',
+    type: '@cart/INCREASE_AMOUNT_REQUEST',
+    id,
+  };
+}
+
+export function increaseAmountSuccess(id) {
+  return {
+    type: '@cart/INCREASE_AMOUNT_SUCCESS',
     id,
   };
 }

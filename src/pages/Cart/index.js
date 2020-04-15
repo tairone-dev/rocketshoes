@@ -11,7 +11,13 @@ import { formatPrice } from '../../util/format';
 import * as CartActions from '../../store/modules/cart/actions';
 import { Container, ProductTable, Total } from './styles';
 
-function Cart({ cart, total, removeFromCart, increaseAmount, decreaseAmount }) {
+function Cart({
+  cart,
+  total,
+  removeFromCart,
+  increaseAmountRequest,
+  decreaseAmount,
+}) {
   return (
     <Container>
       <ProductTable>
@@ -45,7 +51,7 @@ function Cart({ cart, total, removeFromCart, increaseAmount, decreaseAmount }) {
                   <input type="number" readOnly value={product.amount} />
                   <button
                     type="button"
-                    onClick={() => increaseAmount(product.id)}
+                    onClick={() => increaseAmountRequest(product.id)}
                   >
                     <MdAddCircleOutline size={20} color="#7150c1" />
                   </button>

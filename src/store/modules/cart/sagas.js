@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import api from '../../../services/api';
 import { formatPrice } from '../../../util/format';
 
-import { addToCartSuccess, increaseAmount } from './actions';
+import { addToCartSuccess, increaseAmountSuccess } from './actions';
 
 function* addToCart({ id }) {
   const productExists = yield select((state) =>
@@ -22,7 +22,7 @@ function* addToCart({ id }) {
   }
 
   if (productExists) {
-    yield put(increaseAmount(id));
+    yield put(increaseAmountSuccess(id));
     return;
   }
 
@@ -37,4 +37,23 @@ function* addToCart({ id }) {
   yield put(addToCartSuccess(data));
 }
 
-export default all([takeLatest('@cart/ADD_REQUEST', addToCart)]);
+function* increaseAmount({ id }) {
+  const product = yield select((state) =>
+    state.cart.find((productNeedle) => productNeedle.id === id)
+  );
+
+  const stock = yield call(api.get, `stock/${id}`);
+  const stockAmount = stock.data.amount;
+
+  if (product.amount + 1 > stockAmount) {
+    toast.error('Quantidade solicitada indisponível em estoque.');
+    return;
+  }
+
+  yield put(increaseAmountSuccess(id));
+}
+
+export default all([
+  takeLatest('@cart/ADD_REQUEST', addToCart),
+  takeLatest('@cart/INCREASE_AMOUNT_REQUEST', increaseAmount),
+]);
