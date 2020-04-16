@@ -46,6 +46,12 @@ export default function cart(state = [], action) {
 
         product.amount -= 1;
       });
+    case '@cart/BUY_ALL_ITEMS':
+      return produce(state, (draft) => {
+        draft = [];
+
+        return draft;
+      });
     default:
       return state;
   }

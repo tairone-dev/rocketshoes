@@ -39,3 +39,9 @@ export function decreaseAmount(id) {
     id,
   };
 }
+
+export function buyAllItems() {
+  return {
+    type: '@cart/BUY_ALL_ITEMS',
+  };
+}
