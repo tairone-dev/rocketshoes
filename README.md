@@ -1,8 +1,8 @@
 ## Rocketshoes
 
-This is a small project to study the main functionalities of a reactJs application with redux/saga.
+This is a small project to study the main functionalities of a reactJs application with redux/saga and hooks.
 
-The app simulates some of the main functionalities of a cart from an e-commerce. The purpose of the project aims for the main beneficts of using redux/saga pattern in the behavior of the cart, like adding products to the cart, increasing and decreasing product amount.
+The app simulates some of the main functionalities of a cart from an e-commerce. The purpose of the project aims for the main beneficts of using redux/saga pattern alongside with hooks in the behavior of the cart, like adding products to the cart, increasing and decreasing product amount.
 
 Json server is used in this project for simulating a simple API service.
 
